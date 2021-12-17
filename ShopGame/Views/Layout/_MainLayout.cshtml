@@ -1,0 +1,122 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>@ViewBag.Title</title>
+    <meta charset="utf-8" />
+    <link href="~/Content/Style.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <script src="~/Scripts/sammy-0.7.5.js"></script>
+    <script src="~/Scripts/jquery-3.4.1.js"></script>
+
+
+
+
+</head>
+<body>
+    <div class="div-container">
+        <div class="div-header">
+            Shop Game
+
+            <ul class="links">
+                <li><a href="#">@Html.ActionLink("Admin", "Index", "Admin")</a></li>
+            </ul>
+        </div><!--div-header-->
+        
+        <div class="clear"></div>
+        <div class="div-topmenu">
+            <ul>
+        
+                <li><a href="~/Products"> products</a></li>
+                <li><a href="~/ContactUs">Contact Us </a></li>
+                <li><a href="~/ShopCart">Shop Cart</a></li>
+                
+            </ul>
+        </div><!--div-topmenu-->
+        <div class="clear"></div>
+        <div class="div-left">
+            <div class="category-title">Category</div><!--category-title-->
+            <div class="category-list">
+                @Html.Action("CategoryPartial", "Category")
+            </div><!--category-list-->
+        </div><!--div-left-->
+        <div class="div-main">
+           
+            <div class="clear"></div>
+            <div class="main-content">
+
+                @RenderBody()
+
+
+
+            </div><!--main-content-->
+        </div><!--div-main-->
+            <div class="clear"></div>
+           <footer class="footer">
+  	 <div class="container">
+  	 	<div class="row">
+  	 		<div class="footer-col">
+  	 			<h4>company</h4>
+  	 			<ul>
+  	 				<li><a href="#">about us</a></li>
+  	 				<li><a href="#">our services</a></li>
+  	 				<li><a href="#">privacy policy</a></li>
+  	 				<li><a href="#">affiliate program</a></li>
+  	 			</ul>
+  	 		</div>
+  	 		<div class="footer-col">
+  	 			<h4>get help</h4>
+  	 			<ul>
+  	 				<li><a href="#">FAQ</a></li>
+  	 				<li><a href="#">shipping</a></li>
+  	 				<li><a href="#">returns</a></li>
+  	 				<li><a href="#">order status</a></li>
+  	 				<li><a href="#">payment options</a></li>
+  	 			</ul>
+  	 		</div>
+  	 		<div class="footer-col">
+  	 			<h4>Shop Game</h4>
+                <ul>
+                    <li><a href="#">Action</a></li>
+                    <li><a href="#">RPG</a></li>
+                    <li><a href="#">Strategy</a></li>
+                    <li><a href="#">Adventure & Casual</a></li>
+                    <li><a href="#">Simulation</a></li>
+                    <li><a href="#">Sports & Racing</a></li>
+                </ul>
+  	 		</div>
+  	 		<div class="footer-col">
+  	 			<h4>follow us</h4>
+  	 			<div class="social-links">
+  	 				<a href="#"><i class="fab fa-facebook-f"></i></a>
+  	 				<a href="#"><i class="fab fa-twitter"></i></a>
+  	 				<a href="#"><i class="fab fa-instagram"></i></a>
+  	 				<a href="#"><i class="fab fa-linkedin-in"></i></a>
+  	 			</div>
+  	 		</div>
+  	 	</div>
+  	 </div>
+  </footer>
+
+        </div><!--div-container-->
+</body>
+</html>
+
+<script>
+    $('.btn').click(function () {
+        $(this).toggleClass("click");
+        $('.sidebar').toggleClass("show");
+    });
+    $('.feat-btn').click(function () {
+        $('nav ul .feat-show').toggleClass("show");
+        $('nav ul .first').toggleClass("rotate");
+    });
+    $('.serv-btn').click(function () {
+        $('nav ul .serv-show').toggleClass("show1");
+        $('nav ul .second').toggleClass("rotate");
+    });
+    $('nav ul li').click(function () {
+        $(this).addClass("active").siblings().removeClass("active");
+    });
+</script>

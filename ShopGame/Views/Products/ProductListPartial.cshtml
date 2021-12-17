@@ -1,0 +1,37 @@
+﻿@using ShopGame.Models
+
+@using PagedList;
+@using PagedList.Mvc;
+@model PagedList.IPagedList<Product>
+
+@{ foreach (var item in Model)
+    {
+<div class="main-content">
+    <div class="content-image">
+        @*<a href="#"> <img src="@Url.Content("~/Imges/Layout/"+item.Image)" /></a>*@
+        <a href='@Url.Action("Details","Products", new {id=item.ProductId},null)'>
+            <img src='@Url.Content("~/Imges/Layout/"+ item.Image)' />
+        </a>
+    </div><!--content-image-->
+    <div class="content-title">
+        @*<a href="#">@item.ProductName</a>*@
+        @Html.ActionLink(@item.ProductName, "Details", "Products", new { id = item.ProductId }, null)
+    </div><!--content-title-->
+
+    <div class="content-price">
+        Price: $@(String.Format("{0:N0}", item.Price))
+    </div><!--content-price-->
+    <div class="content-price">
+        <i class="fa fa-shopping-cart"></i>
+        @Html.ActionLink("Add to Cart", "OderNow", "ShopCart", new { id = item.ProductId }, null)
+    </div><!--content-price-->
+
+</div><!--main-content--> } }
+
+<div class="clear"></div>
+
+
+<div class="div-pagination" style="margin-left: 469px">
+    Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) /@Model.PageCount
+    @Html.PagedListPager(Model, page => Url.Action("Index", new { page = page, category = ViewBag.category }))
+</div>
